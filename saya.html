@@ -1,0 +1,235 @@
+<!DOCTYPE html>
+<html lang="id">
+	<script>
+		alert ("Asyik Diklik yaa.Tenang Aja Ini Cuma Perkenalan Kok")
+    	alert ("Mau Kenalan Sama Aku?")
+    alert("Lanjut Aja Nanti Masuk Ke Web Ku")
+    alert("hehehe")
+    </script>
+<head>
+	
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Profil Asep Rizki Ramadhan</title>
+    <style>
+        /* Style Umum */
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #1a1a1a;
+            color: #fff;
+            margin: 0;
+            overflow-x: hidden;
+        }
+
+        /* Sidebar (Menu Samping) */
+        .sidebar {
+            position: fixed;
+            left: -200px;
+            top: 0;
+            width: 200px;
+            height: 100%;
+            background-color: #333;
+            padding-top: 20px;
+            transition: left 0.3s;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            z-index: 1;
+        }
+
+        .sidebar.open {
+            left: 0;
+        }
+
+        .sidebar a {
+            text-decoration: none;
+            color: #fff;
+            font-size: 16px;
+            margin: 10px 0;
+            transition: 0.3s;
+        }
+
+        .sidebar a:hover {
+            color: #ff3333;
+        }
+
+        /* Konten Utama */
+        .content {
+            padding: 20px;
+            text-align: center;
+            margin-left: 0;
+        }
+
+        .content h1 {
+            color: #ff3333;
+        }
+
+        .content p {
+            color: #ccc;
+            line-height: 1.5;
+        }
+
+        /* Tombol Menu */
+        .menu-button {
+            font-size: 24px;
+            color: #fff;
+            background-color: #333;
+            border: none;
+            padding: 10px;
+            cursor: pointer;
+            position: fixed;
+            top: 10px;
+            left: 10px;
+            z-index: 2;
+        }
+
+        /* Profil */
+        .profile {
+            background-color: #333;
+            border-radius: 8px;
+            padding: 20px;
+            text-align: center;
+            max-width: 500px;
+            margin: 0 auto;
+        }
+
+        .profile-photo {
+            width: 100px;
+            height: 100px;
+            border-radius: 50%;
+            border: 3px solid #ff3333;
+            margin-bottom: 15px;
+        }
+
+        /* Tautan Sosial */
+        .social-links {
+            display: flex;
+            gap: 10px;
+            justify-content: center;
+            margin-top: 10px;
+        }
+
+        .social-links a {
+            text-decoration: none;
+            color: #ff3333;
+            font-size: 14px;
+            padding: 5px 10px;
+            border: 1px solid #ff3333;
+            border-radius: 5px;
+            transition: 0.3s;
+        }
+
+        .social-links a:hover {
+            background-color: #ff3333;
+            color: #fff;
+        }
+
+        /* Deskripsi Menu */
+        .menu-description {
+            background-color: #2e2e2e;
+            padding: 15px;
+            border-radius: 8px;
+            margin-top: 20px;
+            display: none;
+            text-align: left;
+        }
+
+        /* Warna Merah untuk Teks Intro */
+        .intro {
+            color: red;
+        }
+    </style>
+    
+</head>
+<body>
+	
+    <!-- Tombol Menu -->
+    <button class="menu-button" onclick="toggleMenu()">☰</button>
+
+    <!-- Menu Samping -->
+    <div class="sidebar" id="sidebar">
+        <a href="#" onclick="showDescription('profil'); showAlert('Profil');">Profil</a>
+        <a href="#" onclick="showDescription('asalSekolah'); showAlert('Asal Sekolah');">Asal Sekolah</a>
+        <a href="#" onclick="showDescription('riwayatHidup'); showAlert('Riwayat Hidup');">Riwayat Hidup</a>
+        <a href="#" onclick="showDescription('asmara'); showAlert('Asmara');">Asmara</a>
+        <a href="#" onclick="showDescription('lainnya'); showAlert('Lainnya');">Lainnya</a>
+    </div>
+
+    <!-- Konten Utama -->
+    <div class="content">
+        <h1>Asep Rizki Ramadhan</h1>
+        <p>Mahasiswa Institut Teknologi Semarang | Prodi STI</p>
+        <div class="profile">
+            <a href="https://postimg.cc/WDHx454x" target="_blank">
+                <img src="https://i.postimg.cc/WDHx454x/images.png" alt="images" class="profile-photo">
+            </a>
+            <p class="intro">Halo Perkenalkan Nama Saya Asep Rizki Ramadhan.</p>
+            <p>Saya Mahasiswa Institut Teknologi Dan Bisnis Semarang Prodi STI. Saya Lahir Pada tahun 2007 Di Kota Purbalingga. Saya Memiliki Beberapa Hobi Seperti Menonton Film, Mendengarkan Musik, Dan Bermain Game. Untuk Selebihnya Klik Titik Tiga Di Pojok Atas Yaa Setelah Pilih Menu Geser Tampilan KeBawah Hehe... Atau Hubungi Saya Aja Di Link Dibawah😚</p>
+        </div>
+
+        <!-- Tautan Sosial -->
+        <div class="social-links">
+            <a href="https://www.instagram.com/_fsociety_404?igsh=MTI3bnpidGk3ZGp4dg==" target="_blank">Instagram</a>
+            <a href="https://www.facebook.com/profile.php?id=100079096899121" target="_blank">Facebook</a>
+            <a href="https://wa.me/6281772346160" target="_blank">WhatsApp</a>
+        </div>
+
+        <!-- Deskripsi Menu -->
+        <div id="menuDescription" class="menu-description"></div>
+    </div>
+
+    <script>
+        // Fungsi untuk membuka/menutup menu samping
+        function toggleMenu() {
+            const sidebar = document.getElementById("sidebar");
+            sidebar.classList.toggle("open");
+        }
+
+        // Fungsi untuk menampilkan deskripsi menu
+        function showDescription(menu) {
+            const descriptionBox = document.getElementById("menuDescription");
+            let descriptionText = "";
+
+            switch (menu) {
+                case 'profil':
+                    descriptionText = "<h3>Profil</h3><p>Ini Adalah Sedikit Pengenalan Dari Saya Sebagai Seorang Anak Yang Ingin Hidup Dalam Keadaan Sukses,Sehat,Dan Tentram.</p>";
+                    break;
+                case 'asalSekolah':
+                    descriptionText = "<h3>Asal Sekolah</h3><p>Saya Lulus Dari SMK MANBAUL IHSAN ALBAEDLOWI KERTANEGARA. Sebelumnya Saya Bersekolah Di SMK MA'ARIF NU BOBOTSARI Tapi Karena Sebuah Kasus Akhirnya Saat Naik Kelas 12 Saya Dipindahkan. Dan Sekarang Saya Melanjutkan studi di Institut Teknologi Dan Bisnis Semarang.</p>";
+                    break;
+                case 'riwayatHidup':
+                    descriptionText = "<h3>Riwayat Hidup</h3><p>Saya lahir pada tahun 2007 di kota Purbalingga.Dan Saya Adalah Anak Ke 3(Arjuna)Dari 5 Bersaudara(Pandawa).Untuk Sekarang Saya Tinggal Di Semarang Untuk Melanjutkan Pendidikan Saya Di Institut Teknologi Dan Bisnis Semarang.</p>";
+                    break;
+                case 'asmara':
+                    descriptionText = "<h3>Asmara</h3><p>Dalam Hubungan Asmara. Saya Pernah DiTembak Oleh 6 Perempuan Dalam Kurun Waktu Yang Berbeda. Dari 6 Itu Hanya 1 Yang Saya Pernah Terima Namun Hanya Bertahan Sekitar 1 Bulan Saja. Sedangkan Dalam Hal Menembak Perempuan Saya Pernah Menyatakan Perasaan 1X Dan Itu Tertolak. Untuk Saat ini saya sedang fokus belajar dan belum memiliki pacar kalau ada tolong carikan yaa.</p>";
+                    break;
+                case 'lainnya':
+                    descriptionText = "<h3>Lainnya</h3><p>Yah Itulah Tentang Diri Saya Semoga Anda Bisa Mengenal Saya Dan Mau Menjadi Teman/Bahkan Sahabat Saya.</p>";
+                    break;
+            }
+
+            descriptionBox.innerHTML = descriptionText;
+            descriptionBox.style.display = "block";
+        }
+
+        
+
+        // Deteksi swipe untuk membuka/tutup sidebar
+        let startX;
+
+        document.addEventListener('touchstart', function(e) {
+            startX = e.touches[0].clientX;
+        });
+
+        document.addEventListener('touchend', function(e) {
+            const endX = e.changedTouches[0].clientX;
+            const sidebar = document.getElementById("sidebar");
+
+            // Geser dari kiri ke kanan untuk membuka menu
+            if (startX < 50 && endX > startX + 50) {
+                sidebar.classList.remove("open");
+            }
+        });
+    </script>
+</body>
+</html>
